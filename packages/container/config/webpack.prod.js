@@ -17,7 +17,7 @@ const prodConfig = {
         new ModuleFederationPlugin({
             name: 'container',
             remotes: {
-                marketing: `marketing@${domain}/marketing`
+                marketing: `marketing@${domain}/marketing/latest/remoteEntry.js`,
             },
             // for explicit control of shared packages and versions, use shared
             // shared: ['react', 'react-dom']
