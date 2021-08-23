@@ -5,17 +5,17 @@ import { createMemoryHistory, createBrowserHistory } from 'history';
 import App from './App'
 
 // default history only for dev of marketing app in isolation
-const mount = (el, { onNavigate, defaultHistory, initialPath }) => {
-    const history = defaultHistory || createMemoryHistory(
-        {initialEntries: [initialPath]}
-    );
+const mount = (el, { defaultHistory, initialPath, onNavigate, onSignIn }) => {
+    const history = defaultHistory || createMemoryHistory({
+        initialEntries: [initialPath]
+    });
 
     if (onNavigate) { // onNavigate just relevant for container environments
         history.listen(onNavigate);
     }
 
     ReactDOM.render(
-        <App history={history} />,
+        <App history={history} onSignIn={onSignIn} />,
         el
     );
 
@@ -31,7 +31,7 @@ const mount = (el, { onNavigate, defaultHistory, initialPath }) => {
 };
 
 if (process.env.NODE_ENV === 'development') {
-    const devRoot = document.querySelector('#_marketing-dev-root');
+    const devRoot = document.querySelector('#_auth-dev-root');
     if (devRoot) {
         mount(devRoot, {defaultHistory: createBrowserHistory()})
     }
