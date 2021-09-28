@@ -18,7 +18,8 @@ const prodConfig = {
             name: 'container',
             remotes: {
                 marketing: `marketing@${domain}/marketing/latest/remoteEntry.js`,
-                auth: `auth@${domain}/auth/latest/remoteEntry.js`
+                auth: `auth@${domain}/auth/latest/remoteEntry.js`,
+                dashboard: `dashboard@${domain}/dashboard/latest/remoteEntry.js`
             },
             // for explicit control of shared packages and versions, use shared
             // shared: ['react', 'react-dom']
